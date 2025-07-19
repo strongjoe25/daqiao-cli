@@ -1,14 +1,20 @@
 {
   "name": "daqiao-cli",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "daqiao-cli脚手架",
+  "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Vite-Vue4-Typescript-template"],
+  "files": ["dist", "bin", "README.md"],
+  "author":{
+    "name": "daqiao"
+  } ,
+  "bin": {
+    "daqiao": "bin/index.js"
+  },
   "license": "ISC",
   "dependencies": {
     "@inquirer/prompts": "^7.6.0",
