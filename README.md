@@ -1,11 +1,13 @@
 # ❤️daqiao-cli
 
-# https://img.shields.io/badge/daqiao_cli-v0.0.2-green
+# ![Npm版本](https://img.shields.io/badge/daqiao_cli-v0.0.2-green)
 
 
 # 📖简介
+用于快速搭建前端项目的命令行工具
 
-# 📖模板
+# 模板
+# ✅ [生成Vue3+TS+Vite+ElementPlus+Pinia+Axios+Mock的模板](https://www.npmjs.com/package/daqiao-cli)
 
 ```bash
 # 使用模板创建新项目
