@@ -15,7 +15,7 @@ const simpleGitOptions: Partial<SimpleGitOptions> = {
 const logger = createLogger({
     spinner: {
         interval: 300,
-        frames: ['=','+','*','/'].map(item => chalk.green(item))
+        frames: ['=','+','*','/'].map(item => chalk.blue(item))
     }
 })
 
@@ -25,11 +25,15 @@ export async function clone(downloadUrl: string, prjName:string, options: string
     const git: SimpleGit = simpleGit(simpleGitOptions);
     await logger(git.clone(downloadUrl,prjName,options), '正在下载中', {estimate: 5000})
     console.log('下载完成')
-    console.log('==============================')
-    console.log('==欢迎下载daqiao-cli脚手架工具==')
-    console.log('==============================')
-    await figlet(chalk.green('daqiao cli'))
+    console.log(chalk.blue('=============================='))
+    console.log(chalk.blue('==欢迎下载daqiao-cli脚手架工具=='))
+    console.log(chalk.blue('=============================='))
+    const data = await figlet('欢迎使用 daqiao-cli脚手架')
+    console.log(chalk.blue(data))
 
-    log.info(`你可以执行命令${chalk.yellowBright('pnpm install')}来安装`)
-    log.info(`你可以执行命令${chalk.yellowBright('npm run dev')}来运行`)
+    log.success(`项目创建成功 ${chalk.blueBright(prjName)}`)
+    log.success(`执行以下命令启动项目：`)
+    log.info(`cd ${chalk.yellowBright(prjName)}`)
+    log.info(`${chalk.yellowBright('pnpm install')}`)
+    log.info(`${chalk.yellowBright('npm run dev')}`)
 }

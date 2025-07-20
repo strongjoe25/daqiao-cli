@@ -28,6 +28,7 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
+    "badge-maker": "^5.0.2",
     "chalk": "^3.0.0",
     "commander": "^14.0.0",
     "figlet": "^1.8.2",

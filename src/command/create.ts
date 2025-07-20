@@ -26,8 +26,17 @@ const templates:Map<string, TemplateInfo> = new Map([
         'VITE-TYPESCRIPT-H5-template',
         {
             name: 'h5构建模板',
-            downloadUrl: 'https://git.aerospacex.cn:821/safe_workspace/client/app_pages.git',
+            downloadUrl: 'https://git.aerospacex.cn:821/gdbox/client/ui/h5pages.git',
             description: "h5构建模板",
+            branch: "main"
+        }
+    ],
+    [
+        'VITE-TYPESCRIPT-CloudDisk-template',
+        {
+            name: '云盘构建模板',
+            downloadUrl: 'https://git.aerospacex.cn:821/qiaopengbo/h5pages_cloud_disk.git',
+            description: "云盘构建模板",
             branch: "main"
         }
     ],
@@ -60,11 +69,12 @@ async function isOverWritten(path:string){
 
 export async function create(prjName:string){
     if(!prjName) prjName = await input({message: '请输入项目名称'})
-    let filepath = path.resolve(process.cwd(), prjName)    
-    if(filepath){
+    let filepath = path.resolve(process.cwd(), prjName)
+    console.log('filepath=',filepath)    
+    if(fs.existsSync(filepath)){
         const run = await isOverWritten(filepath)
         if(run){
-            fs.rmdir(filepath)
+            await fs.rm(filepath, { recursive: true, force: true })
         }
     }
 
@@ -73,8 +83,6 @@ export async function create(prjName:string){
         choices:templateList
     })
     const gitRepoInfo = templates.get(templateName)
-    console.log('templateName=', templateName)
-    console.log('gitRepoInfo=', gitRepoInfo)
     if(!gitRepoInfo) return
     await clone(gitRepoInfo.downloadUrl, prjName, ['-b', 'main'])
 }
